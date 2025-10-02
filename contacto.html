@@ -183,10 +183,52 @@
     </footer>
 
     <!-- LÓGICA JAVASCRIPT -->
+    <!-- LÓGICA JAVASCRIPT -->
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navLinks = document.querySelectorAll('#mobile-menu a, nav.hidden a'); // Selecciona enlaces de menú móvil y desktop
+            const hIcon = document.getElementById('h-icon');
+
+            // Función para alternar el menú móvil y el ícono de hamburguesa
+            menuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                
+                // Animación del ícono de hamburguesa
+                if (!mobileMenu.classList.contains('hidden')) {
+                    // Abrir (Cambiar a 'X')
+                    hIcon.children[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                    hIcon.children[1].style.opacity = '0';
+                    hIcon.children[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+                } else {
+                    // Cerrar (Volver a hamburguesa)
+                    hIcon.children[0].style.transform = 'none';
+                    hIcon.children[1].style.opacity = '1';
+                    hIcon.children[2].style.transform = 'none';
+                }
+            });
+
+            // Cerrar el menú móvil al hacer click en un enlace de ancla
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    // Solo si es un enlace de ancla (empieza con #)
+                    if (link.getAttribute('href').startsWith('#')) {
+                        // Cierra el menú móvil si está abierto
+                        if (!mobileMenu.classList.contains('hidden')) {
+                             mobileMenu.classList.add('hidden');
+                             hIcon.children[0].style.transform = 'none';
+                             hIcon.children[1].style.opacity = '1';
+                             hIcon.children[2].style.transform = 'none';
+                        }
+                    }
+                });
+            });
+        });
+
         // Función específica para mostrar el mensaje de éxito del formulario de contacto
         function showMessage() {
-            const form = document.querySelector('form');
+            const form = document.querySelector('#contact form');
             const successMessage = document.getElementById('success-message');
             
             // Simular el envío del formulario
@@ -202,3 +244,4 @@
 </body>
 
 </html>
+
