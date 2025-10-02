@@ -80,11 +80,32 @@
         /* Estilo para la figura de estrella con 9 puntas en la sección ABOUT ME */
         .clip-star-disruptive {
             /* Estrella de 9 puntas: más asimétrica y angular */
-            clip-path: polygon(
-50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%
-            );
-            /* Sombra y bordes para hacerlo más visible sobre el fondo blanco */
-            box-shadow: 0 0 0 8px #000000, 0 0 0 10px #FF0000;
+            .burst-12 {
+  width: 100px; /* Adjust size as needed */
+  height: 100px;
+  background-color: gold; /* Main color */
+  position: relative;
+  text-align: center;
+}
+
+.burst-12::before,
+.burst-12::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: gold; /* Same color as main element */
+}
+
+.burst-12::before {
+  transform: rotate(30deg);
+}
+
+.burst-12::after {
+  transform: rotate(60deg);
+}
         }
     </style>
 </head>
@@ -413,5 +434,6 @@ Refleja la búsqueda de nuevas experiencias y conectar con personas que aspiran 
 
 </body>
 </html>
+
 
 
