@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andrea Portillo - Diseño Gráfico Disruptivo</title>
+    <!-- Carga de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fuente Inter (para modernidad y versatilidad) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* Configuración de Tailwind para definir la paleta de colores y la fuente */
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'ap-red': '#FF0000',      /* Rojo Intenso y Saturado */
+                        'ap-black': '#000000',    /* Negro Absoluto */
+                        'ap-white': '#FFFFFF',    /* Blanco Puro */
+                        'ap-gray': '#1a1a1a',     /* Gris oscuro para secciones intermedias */
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+        /* Estilos base para la experiencia disruptiva y el contraste */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000; 
+            color: #FFFFFF;
+            scroll-behavior: smooth;
+            /* Espacio para que el header fijo no tape el contenido al hacer click en el ancla */
+            scroll-padding-top: 6rem; 
+        }
+
+        /* Estilo para simular tipografía 'Expanded' (títulos grandes, espaciados) */
+        .expanded-text {
+            letter-spacing: 0.18em; /* Más espaciado */
+            font-weight: 900;       
+            text-transform: uppercase;
+        }
+        /* Estilo para simular tipografía 'Condensed' (texto denso, pequeño) */
+        .condensed-text {
+            font-size: 0.85rem; 
+            line-height: 1.1;   
+            font-weight: 500;
+        }
+        /* Título Principal más extremo */
+        .extreme-title {
+            letter-spacing: 0.25em; 
+            font-weight: 900;
+        }
+        /* Nueva variación tipográfica para citas/énfasis */
+        .statement-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            line-height: 1.2;
+            text-shadow: 2px 2px #FF0000;
+        }
+        
+        /* Clase para el botón de menú móvil */
+        .hamburger-icon {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+        }
+        .hamburger-icon div {
+            width: 100%;
+            height: 2px;
+            background-color: #FFFFFF;
+            transition: all 0.3s linear;
+        }
+
+        /* Estilo para la figura de estrella con 9 puntas en la sección ABOUT ME */
+        .clip-star-disruptive {
+            /* Estrella de 9 puntas: más asimétrica y angular */
+            clip-path: polygon(
+                50% 0%, 
+                66% 15%, 
+                100% 35%, 
+                80% 60%, 
+                85% 95%, 
+                50% 80%, 
+                15% 95%, 
+                20% 60%, 
+                0% 35%, 
+                34% 15%
+            );
+            /* Sombra y bordes para hacerlo más visible sobre el fondo blanco */
+            box-shadow: 0 0 0 8px #000000, 0 0 0 10px #FF0000;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. BARRA DE NAVEGACIÓN (HEADER) - FIJA -->
+    <header class="sticky top-0 z-50 bg-ap-black text-ap-white shadow-lg border-b border-ap-red">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <!-- Marca Personal - Logo -->
+            <a href="#home" class="hover:opacity-80 transition-opacity duration-300">
+                <img src="width_550.png" 
+                     alt="Andrea Portillo Logo Disruptivo" 
+                     onerror="this.onerror=null; this.src='https://placehold.co/150x40/000000/FFFFFF?text=A+P'"
+                     class="h-10 border border-ap-white p-1">
+            </a>
+
+            <!-- Menú Desktop (Ahora con enlaces de ancla interna) -->
+            <nav class="hidden md:flex space-x-8 expanded-text text-sm">
+                <a href="#home" class="hover:text-ap-red transition-colors duration-200">Home</a>
+                <a href="#about" class="hover:text-ap-red transition-colors duration-200">About Me</a>
+                <a href="#portfolio" class="hover:text-ap-red transition-colors duration-200">Portafolio</a>
+                <a href="#collections" class="hover:text-ap-red transition-colors duration-200">Colecciones</a>
+                <a href="contacto.html" class="hover:text-ap-red transition-colors duration-200">Contacto</a>
+            </nav>
+
+            <!-- Botón de Menú Móvil (Hamburger) -->
+            <button id="menu-button" class="md:hidden p-2">
+                <div class="hamburger-icon" id="h-icon">
+                    <div class="bg-ap-red w-full"></div>
+                    <div class="bg-ap-red w-full"></div>
+                    <div class="bg-ap-red w-full"></div>
+                </div>
+            </button>
+        </div>
+
+        <!-- Menú Móvil (Desplegable) -->
+        <nav id="mobile-menu" class="hidden md:hidden bg-ap-black w-full absolute top-full left-0 border-t border-ap-red pb-4">
+            <div class="flex flex-col space-y-2 p-4 text-center text-xl expanded-text">
+                <a href="#home" class="block py-2 hover:bg-ap-red hover:text-ap-black transition-all duration-200">HOME</a>
+                <a href="#about" class="block py-2 hover:bg-ap-red hover:text-ap-black transition-all duration-200">ABOUT ME</a>
+                <a href="#portfolio" class="block py-2 hover:bg-ap-red hover:text-ap-black transition-all duration-200">PORTAFOLIO</a>
+                <a href="#collections" class="block py-2 hover:bg-ap-red hover:text-ap-black transition-all duration-200">COLECCIONES</a>
+                <a href="#contact" class="block py-2 hover:bg-ap-red hover:text-ap-black transition-all duration-200">CONTACTO</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="max-w-full mx-auto">
+        
+        <!-- 2. SECCIÓN HOME (BLACK/RED/WHITE) -->
+        <section id="home" class="h-screen relative flex items-center justify-center p-4 bg-ap-black border-b-8 border-ap-red overflow-hidden">
+            <!-- Imagen de Banner de Fondo -->
+            <img src="fondo1.png" 
+                 alt="Banner de Diseño Disruptivo Andrea Portillo" 
+                 onerror="this.onerror=null; this.src='https://placehold.co/1920x1080/000000/FF0000?text=FONDO+BANNER'"
+                 class="absolute inset-0 w-full h-full object-cover opacity-60">
+            
+            <!-- Contenido superpuesto con tipografía extrema -->
+            <div class="relative z-10 text-center">
+                <h1 class="text-6xl sm:text-8xl lg:text-[10rem] extreme-title leading-none mb-4 tracking-widest text-ap-white drop-shadow-lg">
+                    <span class="text-ap-red">ANDREA</span> PORTILLO
+                </h1>
+                <p class="text-xl sm:text-3xl expanded-text tracking-normal text-ap-red font-bold drop-shadow-lg">
+                    DISEÑO GRÁFICO. ESTRATEGIA. IMPACTO.
+                </p>
+                <div class="mt-12">
+                    <a href="#portfolio" class="inline-block px-8 py-4 bg-ap-red text-ap-black text-lg expanded-text font-bold transition-all duration-300 hover:bg-ap-white hover:text-ap-red shadow-[5px_5px_0_0_#FFF]">
+                        VER TRABAJO
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. SECCIÓN ABOUT ME (WHITE/BLACK/RED - MÁXIMO CONTRASTE) -->
+        <section id="about" class="py-24 px-4 sm:px-6 lg:px-8 bg-ap-white text-ap-black border-b-8 border-ap-black">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-5xl expanded-text mb-16 tracking-wide font-black text-ap-red text-center">
+                    / ABOUT ME
+                </h2>
+                <div class="grid md:grid-cols-3 gap-12 items-start">
+                    <!-- Columna 1: Imagen con forma de estrella disruptiva (9 Puntas) -->
+                    <div class="md:col-span-1">
+                        <div class="clip-star-disruptive overflow-hidden w-full aspect-square mx-auto">
+                             <img src="retrato.png" alt="Foto de Andrea Portillo, Diseñadora Gráfica" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <p class="condensed-text text-center mt-6 text-ap-red font-bold">.</p>
+                    </div>
+
+                    <!-- Columna 2: Bio Detallado (Condensed) -->
+                    <div class="md:col-span-2">
+                        <p class="statement-text text-ap-red mb-8">
+                            "Mi diseño no susurra. Exige atención. Es la colisión controlada entre la lógica y la audacia tipográfica."
+                        </p>
+                        <!-- Biografía actualizada con nuevas especializaciones -->
+                        <p class="condensed-text text-base mb-4 text-ap-black">
+                            Soy Andrea Portillo, diseñadora gráfica. Mi especialización principal es la **tipografía**, extendiéndose al **diseño editorial** y la **ilustración**. Mi enfoque es la **disrupción estratégica**: utilizo paletas de alto contraste (Negro, Rojo, Blanco) y tipografía hiper-expresiva para garantizar que tu mensaje no solo sea visto, sino recordado. 
+                        </p>
+                        <p class="condensed-text text-base mb-6 text-ap-black">
+                            Mi filosofía es que en el diseño lo más memorable es lo menos convencional. Creo en la eficiencia del diseño extremo cuando se aplica con intención y propósito.
+                        </p>
+
+                        <!-- Habilidades Actualizadas -->
+                        <div class="mt-8">
+                            <h3 class="expanded-text text-xl mb-4 text-ap-black border-b border-ap-red pb-2">DISCIPLINAS</h3>
+                            <div class="flex flex-wrap gap-3 condensed-text">
+                                <span class="bg-ap-red text-ap-white px-3 py-1 rounded-full border-2 border-ap-black font-semibold">TIPOGRAFÍA EXPERIMENTAL</span>
+                                <span class="bg-ap-red text-ap-white px-3 py-1 rounded-full border-2 border-ap-black font-semibold">DISEÑO EDITORIAL</span>
+                                <span class="bg-ap-red text-ap-white px-3 py-1 rounded-full border-2 border-ap-black font-semibold">ILUSTRACIÓN CONCEPTUAL</span>
+                                <span class="bg-ap-red text-ap-white px-3 py-1 rounded-full border-2 border-ap-black font-semibold">ADOBE CREATIVE SUITE</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. SECCIÓN PORTAFOLIO (BLACK/RED/WHITE) -->
+        <section id="portfolio" class="py-24 px-4 sm:px-6 lg:px-8 bg-ap-black text-ap-white border-b-8 border-ap-red">
+             <div class="max-w-7xl mx-auto w-full">
+                <h2 class="text-5xl expanded-text mb-16 tracking-wide font-black text-ap-red text-center">
+                    / PORTAFOLIO
+                </h2>
+                <p class="text-xl expanded-text mb-16 text-center text-ap-white/80 font-light">
+                    MUESTRA CURADA DE PROYECTOS.
+                </p>
+
+                <!-- Tarjeta de Proyecto 1 -->
+                <div class="grid md:grid-cols-2 gap-8 mb-20 p-6 border-4 border-ap-red rounded-xl shadow-[8px_8px_0_0_#FF0000] hover:shadow-[12px_12px_0_0_#FFF] transition-shadow duration-300">
+                    <div class="order-2 md:order-1 flex flex-col justify-center">
+                        <h3 class="text-3xl expanded-text mb-3 font-bold text-ap-red">MI LUGAR FAVORITO</h3>
+                        <span class="text-ap-white condensed-text font-bold mb-4 border-b border-ap-red pb-1 inline-block">SOCIAL MEDIA | 2024</span>
+                        <p class="condensed-text text-base mb-4 text-ap-white/90">
+Enfatiza con la personalización de la experiencia, e invita a no solo visitar Países Bajos, sino que también a hacerlo bajo sus propias condiciones, explorando nuevos destinos fuera de lo común y tener recuerdos más auténticos, haciendo que su viaje sea memorable a través de los servicios de KLM.
+
+Refleja la búsqueda de nuevas experiencias y conectar con personas que aspiran a un nivel de vida interesante y fuera de lo convencional. Apela a los deseos de explorar, mostrando un estilo de vidad enriquecedor y diferente.
+
+                        </p>
+                        <ul class="condensed-text list-disc list-inside ml-4 text-ap-white/70">
+                            <li>Descubre a tu propio ritmo</li>
+                            <li>Creación de campaña</li>
+                        </ul>
+                        <a href="#" class="mt-6 inline-block text-ap-red expanded-text font-bold hover:text-ap-white transition-colors duration-200 border-b-2 border-ap-red">VER MÁS &rarr;</a>
+                    </div>
+                    <div class="order-1 md:order-2">
+                        <img src="proyecto1.jpg" alt="Proyecto Marca Extrema" class="w-full h-auto object-cover border-4 border-ap-white">
+                    </div>
+                </div>
+                
+                <!-- Tarjeta de Proyecto 2 -->
+                <div class="grid md:grid-cols-2 gap-8 p-6 border-4 border-ap-red rounded-xl shadow-[8px_8px_0_0_#FF0000] hover:shadow-[12px_12px_0_0_#FFF] transition-shadow duration-300">
+                    <div class="order-2 md:order-1 flex flex-col justify-center">
+                        <h3 class="text-3xl expanded-text mb-3 font-bold text-ap-red">REVISTA PUNKSPHERE</h3>
+                        <span class="text-ap-white condensed-text font-bold mb-4 border-b border-ap-red pb-1 inline-block">DISEÑO EDITORIAL | 2023</span>
+                        <p class="condensed-text text-base mb-4 text-ap-white/90">
+                            PunkSphere se distingue por su estética audaz y rebelde, inspirada en la energía cruda del punk y la sofisticación del new wave. El diseño gráfico incluye colores vibrantes y contrastantes, tipografías audaces y elementos gráficos que evocan el espíritu anárquico del punk. La maquetación es dinámica y rompe con los patrones tradicionales, reflejando la naturaleza disruptiva de la música que presenta.
+                        </p>
+                        <ul class="condensed-text list-disc list-inside ml-4 text-ap-white/70">
+                            <li>Revista disruptiva.</li>
+                            <li>Una nueva visión sobre la música</li>
+                        </ul>
+                        <a href="#" class="mt-6 inline-block text-ap-red expanded-text font-bold hover:text-ap-white transition-colors duration-200 border-b-2 border-ap-red">VER LA REVISTA &rarr;</a>
+                    </div>
+                    <div class="order-1 md:order-2">
+                        <img src="proyecto2.jpg" alt="Maqueta UI Condensed" class="w-full h-auto object-cover border-4 border-ap-white">
+                    </div>
+                </div>
+             </div>
+        </section>
+
+        <!-- 5. SECCIÓN COLECCIONES (RED/BLACK/WHITE - EL MÁS DINÁMICO) -->
+        <section id="collections" class="py-24 px-4 sm:px-6 lg:px-8 bg-ap-red text-ap-black border-b-8 border-ap-black">
+            <div class="max-w-7xl mx-auto w-full">
+                <h2 class="text-5xl expanded-text mb-16 tracking-wide font-black text-ap-black text-center">
+                    / COLECCIONES
+                </h2>
+                <p class="text-xl expanded-text mb-16 text-center text-ap-black font-light">
+                    LÍNEA PERSONAL DE EXPERIMENTACIÓN GRÁFICA.
+                </p>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Colección 1: Typo Extrema -->
+                    <div class="bg-ap-black p-6 rounded-lg border-4 border-ap-white shadow-xl hover:shadow-[0_0_15px_rgba(255,255,255,0.7)] transition-shadow duration-300">
+                        <h3 class="text-3xl expanded-text mb-4 text-ap-red">01. CHASCA</h3>
+                        <p class="condensed-text text-ap-white/90 mb-4">
+                            Chasca es una marca de indumentaria de lujo que es parte del sector textil desde aproximadamente el año 2016 que opera desde San Salvador, paricialmente desde Santa Tecla a manos del empresario Mauricio Antonio López.
+                        </p>
+                        <a href="#" class="text-ap-red expanded-text font-bold hover:text-ap-white transition-colors duration-200 border-b border-ap-white"> CONOCE LA MARCA &rarr;</a>
+                    </div>
+
+                    <!-- Colección 2: Grid Hacking -->
+                    <div class="bg-ap-white p-6 rounded-lg border-4 border-ap-black shadow-xl hover:shadow-[0_0_15px_rgba(0,0,0,0.7)] transition-shadow duration-300">
+                        <h3 class="text-3xl expanded-text mb-4 text-ap-red">02. LIBRO INFANTIL</h3>
+                        <p class="condensed-text text-ap-black/90 mb-4">
+                            Diseño de libro illustrado, sobre un bestiario de 12 especies de dinosaurios, dirigido a niños de 5 a 7 años.  El bestiario es contado en el formato de una pequeña historia de un Tiranosaurio Rex, quien se pierde y en su travesía cononoce a 11 especies diferentes.nsión visual sin perder legibilidad clave.
+                        </p>
+                        <a href="#" class="text-ap-red expanded-text font-bold hover:text-ap-black transition-colors duration-200 border-b border-ap-black">VER LIBRO &rarr;</a>
+                    </div>
+
+                    <!-- Colección 3: Color Shock -->
+                    <div class="bg-ap-black p-6 rounded-lg border-4 border-ap-red shadow-xl hover:shadow-[0_0_15px_rgba(255,0,0,0.7)] transition-shadow duration-300">
+                        <h3 class="text-3xl expanded-text mb-4 text-ap-white">03. MURAL MUSICAL</h3>
+                        <p class="condensed-text text-ap-white/90 mb-4">
+                            Desarrollo y conceptualización de un mural inspirado en la música, su esencia, la cultura callejera y el arte contemporáneo. “Wanna Listen to Some Tunes” busca que el público interprete y lo relacione a sus gustos musicales propios, haciendo cada experiencia única. 
+                        </p>
+                        <a href="#" class="text-ap-red expanded-text font-bold hover:text-ap-white transition-colors duration-200 border-b border-ap-red">VER MURAL &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 6. SECCIÓN CONTACTO (BLACK/RED/WHITE) -->
+        <section id="contact" class="min-h-screen flex items-center py-24 px-4 sm:px-6 lg:px-8 bg-ap-black text-ap-white">
+            <div class="max-w-7xl mx-auto w-full">
+                <h2 class="text-5xl expanded-text mb-12 tracking-wide font-black text-ap-red text-center">
+                    / CONTACTO
+                </h2>
+                <div class="max-w-xl mx-auto border-4 border-ap-red p-8 rounded-xl shadow-[10px_10px_0_0_#FF0000]">
+                    <p class="text-xl expanded-text mb-8 text-center text-ap-white">
+                        ¿TRABAJAMOS JUNTOS? HABLEMOS.
+                    </p>
+                    <!-- Formulario de Contacto -->
+                    <form onsubmit="event.preventDefault(); showMessage()">
+                        <div class="mb-4">
+                            <label for="name" class="block mb-2 condensed-text text-ap-red">NOMBRE COMPLETO</label>
+                            <input type="text" id="name" required class="w-full p-3 bg-ap-black border-2 border-ap-red text-ap-white focus:outline-none focus:border-ap-white rounded-none placeholder-ap-white/50" placeholder="Su Nombre">
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block mb-2 condensed-text text-ap-red">EMAIL PROFESIONAL</label>
+                            <input type="email" id="email" required class="w-full p-3 bg-ap-black border-2 border-ap-red text-ap-white focus:outline-none focus:border-ap-white rounded-none placeholder-ap-white/50" placeholder="email@dominio.com">
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block mb-2 condensed-text text-ap-red">MENSAJE / PROYECTO</label>
+                            <textarea id="message" rows="4" required class="w-full p-3 bg-ap-black border-2 border-ap-red text-ap-white focus:outline-none focus:border-ap-white rounded-none placeholder-ap-white/50" placeholder="Describa brevemente su necesidad..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-3 bg-ap-red text-ap-black expanded-text font-bold hover:bg-ap-white hover:text-ap-red transition-all duration-300">
+                            ENVIAR DISRUPCIÓN
+                        </button>
+                    </form>
+                    
+                    <!-- Contenedor para el mensaje de éxito (No usar alert()) -->
+                    <div id="success-message" class="hidden mt-6 bg-ap-white p-4 text-ap-black text-center condensed-text font-bold rounded-lg border-2 border-ap-red">
+                        ¡Mensaje enviado! Andrea se pondrá en contacto pronto.
+                    </div>
+
+                    <div class="mt-8 text-center">
+                        <p class="condensed-text mb-2 text-ap-white/70">O escríbame directamente a:</p>
+                        <a href="mailto:andrea@email.com" class="text-ap-red expanded-text hover:text-ap-white transition-colors duration-200">andrea@email.com</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER - Común a todas las páginas -->
+    <footer class="bg-ap-red text-ap-black py-8 border-t border-ap-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="expanded-text text-sm mb-2">
+                ANDREA PORTILLO &copy; 2025 | DERECHOS RESERVADOS
+            </p>
+            <p class="condensed-text text-xs">
+                Diseño desarrollado bajo principios de Alto Contraste y Tipografía Expresiva.
+            </p>
+        </div>
+    </footer>
+
+    <!-- LÓGICA JAVASCRIPT -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navLinks = document.querySelectorAll('#mobile-menu a, nav.hidden a'); // Selecciona enlaces de menú móvil y desktop
+            const hIcon = document.getElementById('h-icon');
+
+            // Función para alternar el menú móvil y el ícono de hamburguesa
+            menuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                
+                // Animación del ícono de hamburguesa
+                if (!mobileMenu.classList.contains('hidden')) {
+                    // Abrir (Cambiar a 'X')
+                    hIcon.children[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                    hIcon.children[1].style.opacity = '0';
+                    hIcon.children[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+                } else {
+                    // Cerrar (Volver a hamburguesa)
+                    hIcon.children[0].style.transform = 'none';
+                    hIcon.children[1].style.opacity = '1';
+                    hIcon.children[2].style.transform = 'none';
+                }
+            });
+
+            // Cerrar el menú móvil al hacer click en un enlace de ancla
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    // Solo si es un enlace de ancla (empieza con #)
+                    if (link.getAttribute('href').startsWith('#')) {
+                        // Cierra el menú móvil si está abierto
+                        if (!mobileMenu.classList.contains('hidden')) {
+                             mobileMenu.classList.add('hidden');
+                             hIcon.children[0].style.transform = 'none';
+                             hIcon.children[1].style.opacity = '1';
+                             hIcon.children[2].style.transform = 'none';
+                        }
+                    }
+                });
+            });
+        });
+
+        // Función específica para mostrar el mensaje de éxito del formulario de contacto
+        function showMessage() {
+            const form = document.querySelector('#contact form');
+            const successMessage = document.getElementById('success-message');
+            
+            // Simular el envío del formulario
+            form.reset();
+            successMessage.classList.remove('hidden');
+            
+            // Ocultar el mensaje después de 5 segundos
+            setTimeout(() => {
+                successMessage.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
+
+</body>
+</html>
