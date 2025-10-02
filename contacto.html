@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <style>
+     <style>
         /* Configuración de Tailwind para definir la paleta de colores y la fuente */
         tailwind.config = {
             theme: {
@@ -19,6 +19,7 @@
                         'ap-red': '#FF0000',      /* Rojo Intenso y Saturado */
                         'ap-black': '#000000',    /* Negro Absoluto */
                         'ap-white': '#FFFFFF',    /* Blanco Puro */
+                        'ap-gray': '#1a1a1a',     /* Gris oscuro para secciones intermedias */
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -26,16 +27,19 @@
                 }
             }
         }
-        /* Estilos base para el alto contraste */
+        /* Estilos base para la experiencia disruptiva y el contraste */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #000000; 
             color: #FFFFFF;
+            scroll-behavior: smooth;
+            /* Espacio para que el header fijo no tape el contenido al hacer click en el ancla */
+            scroll-padding-top: 6rem; 
         }
 
         /* Estilo para simular tipografía 'Expanded' (títulos grandes, espaciados) */
         .expanded-text {
-            letter-spacing: 0.18em; 
+            letter-spacing: 0.18em; /* Más espaciado */
             font-weight: 900;       
             text-transform: uppercase;
         }
@@ -44,6 +48,45 @@
             font-size: 0.85rem; 
             line-height: 1.1;   
             font-weight: 500;
+        }
+        /* Título Principal más extremo */
+        .extreme-title {
+            letter-spacing: 0.25em; 
+            font-weight: 900;
+        }
+        /* Nueva variación tipográfica para citas/énfasis */
+        .statement-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            line-height: 1.2;
+            text-shadow: 2px 2px #FF0000;
+        }
+        
+        /* Clase para el botón de menú móvil */
+        .hamburger-icon {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+        }
+        .hamburger-icon div {
+            width: 100%;
+            height: 2px;
+            background-color: #FFFFFF;
+            transition: all 0.3s linear;
+        }
+
+        /* Estilo para la figura de estrella con 9 puntas en la sección ABOUT ME */
+        .clip-star-disruptive {
+            /* Estrella de 9 puntas: más asimétrica y angular */
+            clip-path: polygon(
+50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%
+            );
+            /* Sombra y bordes para hacerlo más visible sobre el fondo blanco */
+            box-shadow: 0 0 0 8px #000000, 0 0 0 10px #FF0000;
         }
     </style>
 </head>
@@ -244,4 +287,5 @@
 </body>
 
 </html>
+
 
