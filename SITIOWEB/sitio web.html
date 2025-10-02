@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andrea Portillo - Home</title>
+    <!-- Carga de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fuente Inter (para modernidad y versatilidad) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* Configuración de Tailwind para definir la paleta de colores y la fuente */
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'ap-red': '#FF0000',      /* Rojo Intenso y Saturado */
+                        'ap-black': '#000000',    /* Negro Absoluto */
+                        'ap-white': '#FFFFFF',    /* Blanco Puro */
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+        /* Estilos base para la experiencia disruptiva y el contraste */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000; 
+            color: #FFFFFF;
+            scroll-behavior: smooth;
+        }
+
+        /* Estilo para simular tipografía 'Expanded' (títulos grandes, espaciados) */
+        .expanded-text {
+            letter-spacing: 0.18em; /* Más espaciado */
+            font-weight: 900;       
+            text-transform: uppercase;
+        }
+        /* Estilo para simular tipografía 'Condensed' (texto denso, pequeño) */
+        .condensed-text {
+            font-size: 0.85rem; 
+            line-height: 1.1;   
+            font-weight: 500;
+        }
+        /* Título Principal más extremo */
+        .extreme-title {
+            letter-spacing: 0.25em; 
+            font-weight: 900;
+        }
+        
+        /* Clase para el botón de menú móvil */
+        .hamburger-icon {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+        }
+        .hamburger-icon div {
+            width: 100%;
+            height: 2px;
+            background-color: #FFFFFF;
+            transition: all 0.3s linear;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. BARRA DE NAVEGACIÓN (HEADER) - Común a todas las páginas -->
+    <header class="sticky top-0 z-50 bg-ap-black text-ap-white shadow-lg border-b border-ap-red">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <!-- Marca Personal - Andrea Portillo (IMAGEN DE LOGO) -->
+            <a href="index.html" class="hover:opacity-80 transition-opacity duration-300">
+                <img src="https://placehold.co/120x40/FF0000/000000?text=AP+LOGO" 
+                     alt="Andrea Portillo Logo Disruptivo" 
+                     class="h-10 border border-ap-white p-1">
+            </a>
+
+            <!-- Menú Desktop -->
+            <nav class="hidden md:flex space-x-8 expanded-text text-sm">
+                <a href="index.html" class="hover:text-ap-red transition-colors duration-200">Home</a>
+                <a href="about.html" class="hover:text-ap-red transition-colors duration-200">About Me</a>
+                <a href="portfolio.html" class="hover:text-ap-red transition-colors duration-200">Portafolio</a>
+                <a href="collections.html" class="hover:text-ap-red transition-colors duration-200">Colecciones</a>
+                <a href="contact.html" class="hover:text-ap-red transition-colors duration-200">Contacto</a>
+            </nav>
+
+            <!-- Botón de Menú Móvil (Hamburger) -->
+            <button id="menu-button" class="md:hidden p-2">
+                <div class="hamburger-icon" id="h-icon">
+                    <div class="bg-ap-red w-full"></div>
+                    <div class="bg-ap-red w-full"></div>
+                    <div class="bg-ap-red w-full"></div>
+                </div>
+            </button>
+        </div>
+
+        <!-- Menú Móvil (Desplegable) -->
+        <nav id="mobile-menu" class="hidden md:hidden bg-ap-black w-full absolute top-full left-0 border-t border-ap-red pb-4">
+            <div class="flex flex-col space-y-2 p-4 text-center text-xl expanded-text">
+                <a href="index.html" class="block py-2 hover:bg-ap-red hover:text-ap-black transition-all duration-200">HOME</a>
+                <a href="about.html" class="block py-2 hover:bg-ap-red hover:text-ap-black transition-all duration-200">ABOUT ME</a>
+                <a href="portfolio.html" class="block py-2 hover:bg-ap-red hover:text-ap-black transition-all duration-200">PORTAFOLIO</a>
+                <a href="collections.html" class="block py-2 hover:bg-ap-red hover:text-ap-black transition-all duration-200">COLECCIONES</a>
+                <a href="contact.html" class="block py-2 hover:bg-ap-red hover:text-ap-black transition-all duration-200">CONTACTO</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="max-w-full mx-auto">
+        
+        <!-- 2. SECCIÓN HOME (LIENZO PRINCIPAL: BLACK/RED/WHITE) -->
+        <section id="home" class="h-screen relative flex items-center justify-center p-4 bg-ap-black border-b-8 border-ap-red overflow-hidden">
+            <!-- Imagen de Banner de Fondo (Placeholder) -->
+            <img src="https://placehold.co/1920x1080/000000/FF0000?text=ANDREA+PORTILLO+DESIGN+BANNER" 
+                 alt="Banner de Diseño Disruptivo Andrea Portillo" 
+                 class="absolute inset-0 w-full h-full object-cover opacity-60">
+            
+            <!-- Contenido superpuesto con tipografía extrema -->
+            <div class="relative z-10 text-center">
+                <h1 class="text-6xl sm:text-8xl lg:text-[10rem] extreme-title leading-none mb-4 tracking-widest text-ap-white drop-shadow-lg">
+                    <span class="text-ap-red">ANDREA</span> PORTILLO
+                </h1>
+                <p class="text-xl sm:text-3xl expanded-text tracking-normal text-ap-red font-bold drop-shadow-lg">
+                    DISEÑO GRÁFICO. ESTRATEGIA. IMPACTO.
+                </p>
+                <div class="mt-12">
+                    <a href="portfolio.html" class="inline-block px-8 py-4 bg-ap-red text-ap-black text-lg expanded-text font-bold transition-all duration-300 hover:bg-ap-white hover:text-ap-red shadow-[5px_5px_0_0_#FFF]">
+                        VER TRABAJO
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER - Común a todas las páginas -->
+    <footer class="bg-ap-red text-ap-black py-8 border-t border-ap-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="expanded-text text-sm mb-2">
+                ANDREA PORTILLO &copy; 2025 | DERECHOS RESERVADOS
+            </p>
+            <p class="condensed-text text-xs">
+                Diseño desarrollado bajo principios de Alto Contraste y Tipografía Expresiva.
+            </p>
+        </div>
+    </footer>
+
+    <!-- LÓGICA JAVASCRIPT - Común a todas las páginas -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navLinks = mobileMenu.querySelectorAll('a');
+            const hIcon = document.getElementById('h-icon');
+
+            // Función para alternar el menú móvil y el ícono de hamburguesa
+            menuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                
+                // Animación del ícono de hamburguesa
+                if (!mobileMenu.classList.contains('hidden')) {
+                    // Abrir (Cambiar a 'X')
+                    hIcon.children[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                    hIcon.children[1].style.opacity = '0';
+                    hIcon.children[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+                } else {
+                    // Cerrar (Volver a hamburguesa)
+                    hIcon.children[0].style.transform = 'none';
+                    hIcon.children[1].style.opacity = '1';
+                    hIcon.children[2].style.transform = 'none';
+                }
+            });
+
+            // Cerrar el menú móvil al hacer click en un enlace
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    // Resetear el ícono al cerrar
+                    hIcon.children[0].style.transform = 'none';
+                    hIcon.children[1].style.opacity = '1';
+                    hIcon.children[2].style.transform = 'none';
+                });
+            });
+        });
+
+        // La función showMessage solo es necesaria en contact.html, pero se deja aquí para consistencia si se copia este JS.
+        function showMessage() {
+            // Esta función será implementada en contact.html
+            console.log("Formulario simulado enviado.");
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Andrea Portillo</title>
+    <!-- Carga de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fuente Inter y Font Awesome para íconos sociales -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* Configuración de Tailwind para definir la paleta de colores y la fuente */
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'ap-red': '#FF0000',      /* Rojo Intenso y Saturado */
+                        'ap-black': '#000000',    /* Negro Absoluto */
+                        'ap-white': '#FFFFFF',    /* Blanco Puro */
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+        /* Estilos base para el alto contraste */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000; 
+            color: #FFFFFF;
+        }
+
+        /* Estilo para simular tipografía 'Expanded' (títulos grandes, espaciados) */
+        .expanded-text {
+            letter-spacing: 0.18em; 
+            font-weight: 900;       
+            text-transform: uppercase;
+        }
+        /* Estilo para simular tipografía 'Condensed' (texto denso, pequeño) */
+        .condensed-text {
+            font-size: 0.85rem; 
+            line-height: 1.1;   
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <header class="sticky top-0 z-50 bg-ap-black text-ap-white shadow-lg border-b border-ap-red">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <!-- Marca Personal - Logo -->
+            <a href="#home" class="hover:opacity-80 transition-opacity duration-300">
+                <img src="width_550.png" 
+                     alt="Andrea Portillo Logo Disruptivo" 
+                     onerror="this.onerror=null; this.src='https://placehold.co/150x40/000000/FFFFFF?text=A+P'"
+                     class="h-10 border border-ap-white p-1">
+            </a>
+
+            <!-- Menú Desktop (Ahora con enlaces de ancla interna) -->
+            <nav class="hidden md:flex space-x-8 expanded-text text-sm">
+                <a href="index.html" class="hover:text-ap-red transition-colors duration-200">Home</a>
+                <a href="#about" class="hover:text-ap-red transition-colors duration-200">About Me</a>
+                <a href="#portfolio" class="hover:text-ap-red transition-colors duration-200">Portafolio</a>
+                <a href="#collections" class="hover:text-ap-red transition-colors duration-200">Colecciones</a>
+                <a href="contacto.html" class="hover:text-ap-red transition-colors duration-200">Contacto</a>
+            </nav>
+
+            <!-- Botón de Menú Móvil (Hamburger) -->
+            <button id="menu-button" class="md:hidden p-2">
+                <div class="hamburger-icon" id="h-icon">
+                    <div class="bg-ap-red w-full"></div>
+                    <div class="bg-ap-red w-full"></div>
+                    <div class="bg-ap-red w-full"></div>
+                </div>
+            </button>
+        </div>
+
+        <!-- Menú Móvil (Desplegable) -->
+        <nav id="mobile-menu" class="hidden md:hidden bg-ap-black w-full absolute top-full left-0 border-t border-ap-red pb-4">
+            <div class="flex flex-col space-y-2 p-4 text-center text-xl expanded-text">
+                <a href="#home" class="block py-2 hover:bg-ap-red hover:text-ap-black transition-all duration-200">HOME</a>
+                <a href="#about" class="block py-2 hover:bg-ap-red hover:text-ap-black transition-all duration-200">ABOUT ME</a>
+                <a href="#portfolio" class="block py-2 hover:bg-ap-red hover:text-ap-black transition-all duration-200">PORTAFOLIO</a>
+                <a href="#collections" class="block py-2 hover:bg-ap-red hover:text-ap-black transition-all duration-200">COLECCIONES</a>
+                <a href="#contact" class="block py-2 hover:bg-ap-red hover:text-ap-black transition-all duration-200">CONTACTO</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-grow flex items-center py-20 px-4 sm:px-6 lg:px-8 bg-ap-black text-ap-white">
+        <div class="max-w-7xl mx-auto w-full">
+            <h1 class="text-6xl expanded-text mb-12 tracking-wide font-black text-ap-red text-center">
+                / CONTACTO
+            </h1>
+            
+            <!-- Contenedor Principal: Formulario y Redes -->
+            <div class="grid lg:grid-cols-2 gap-12 max-w-4xl mx-auto">
+                
+                <!-- Columna 1: Formulario de Contacto -->
+                <div class="border-4 border-ap-red p-8 rounded-xl shadow-[10px_10px_0_0_#FF0000] bg-ap-black">
+                    <p class="text-xl expanded-text mb-8 text-ap-white border-b border-ap-red pb-2">
+                        GENEREMOS IMPACTO.
+                    </p>
+                    <form onsubmit="event.preventDefault(); showMessage()">
+                        <div class="mb-4">
+                            <label for="name" class="block mb-2 condensed-text text-ap-red">NOMBRE COMPLETO</label>
+                            <input type="text" id="name" required class="w-full p-3 bg-ap-black border-2 border-ap-red text-ap-white focus:outline-none focus:border-ap-white rounded-none placeholder-ap-white/50" placeholder="Su Nombre">
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block mb-2 condensed-text text-ap-red">EMAIL PROFESIONAL</label>
+                            <input type="email" id="email" required class="w-full p-3 bg-ap-black border-2 border-ap-red text-ap-white focus:outline-none focus:border-ap-white rounded-none placeholder-ap-white/50" placeholder="email@dominio.com">
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block mb-2 condensed-text text-ap-red">MENSAJE / PROYECTO</label>
+                            <textarea id="message" rows="4" required class="w-full p-3 bg-ap-black border-2 border-ap-red text-ap-white focus:outline-none focus:border-ap-white rounded-none placeholder-ap-white/50" placeholder="Describa brevemente su necesidad..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-3 bg-ap-red text-ap-black expanded-text font-bold hover:bg-ap-white hover:text-ap-red transition-all duration-300 shadow-[2px_2px_0_0_#FFF]">
+                            ENVIAR DISRUPCIÓN
+                        </button>
+                    </form>
+                    
+                    <!-- Contenedor para el mensaje de éxito (No usar alert()) -->
+                    <div id="success-message" class="hidden mt-6 bg-ap-white p-4 text-ap-black text-center condensed-text font-bold rounded-lg border-2 border-ap-red">
+                        ¡Mensaje enviado! Andrea se pondrá en contacto pronto.
+                    </div>
+                </div>
+
+                <!-- Columna 2: Íconos y Contacto Directo -->
+                <div class="flex flex-col justify-center items-center lg:items-start text-center lg:text-left p-8">
+                    <p class="text-xl expanded-text mb-8 text-ap-red">
+                        REDES & PORTAFOLIO
+                    </p>
+                    
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-6">
+                        <!-- Ícono Behance -->
+                        <a href="https://www.behance.net/asportillo" target="_blank" class="text-ap-white hover:text-ap-red transition-colors duration-200">
+                            <i class="fab fa-behance text-4xl"></i>
+                            <p class="condensed-text mt-1">BEHANCE</p>
+                        </a>
+                        
+                        <!-- Ícono Instagram -->
+                        <a href="https://www.instagram.com/astokp__?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="text-ap-white hover:text-ap-red transition-colors duration-200">
+                            <i class="fab fa-instagram text-4xl"></i>
+                            <p class="condensed-text mt-1">INSTAGRAM</p>
+                        </a>
+
+                        <!-- Ícono Issuu (Representado por un libro para publicaciones) -->
+                        <a href="https://issuu.com/andrea_portillo" target="_blank" class="text-ap-white hover:text-ap-red transition-colors duration-200">
+                            <i class="fas fa-book text-4xl"></i>
+                            <p class="condensed-text mt-1">ISSUU</p>
+                        </a>
+                        
+                        <!-- Ícono Gmail (Correo Electrónico) -->
+                        <a href="mailto:andrea@email.com" class="text-ap-white hover:text-ap-red transition-colors duration-200">
+                            <i class="fas fa-envelope text-4xl"></i>
+                            <p class="condensed-text mt-1">GMAIL</p>
+                        </a>
+                    </div>
+                    
+                    <!-- Email de Contacto Principal -->
+                    <div class="mt-12 w-full border-t border-ap-red pt-4">
+                         <p class="condensed-text mb-2 text-ap-white/70">EMAIL DIRECTO:</p>
+                        <a href="mailto:andrea@email.com" class="text-2xl expanded-text text-ap-red hover:text-ap-white transition-colors duration-200">andrea@email.com</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-ap-red text-ap-black py-6 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="expanded-text text-sm mb-1">
+                ANDREA PORTILLO &copy; 2025
+            </p>
+            <p class="condensed-text text-xs">
+                Diseño Gráfico Disruptivo.
+            </p>
+        </div>
+    </footer>
+
+    <!-- LÓGICA JAVASCRIPT -->
+    <script>
+        // Función específica para mostrar el mensaje de éxito del formulario de contacto
+        function showMessage() {
+            const form = document.querySelector('form');
+            const successMessage = document.getElementById('success-message');
+            
+            // Simular el envío del formulario
+            form.reset();
+            successMessage.classList.remove('hidden');
+            
+            // Ocultar el mensaje después de 5 segundos
+            setTimeout(() => {
+                successMessage.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
